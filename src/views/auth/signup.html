@@ -1,0 +1,37 @@
+<%-include("../partials/_header.ejs") -%>
+<section class="login">
+    <div>
+        <div class="text-center">
+            <h1 class="login__heading">Register</h1>
+        </div>
+        <form class="form">
+            <div class="form__group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="" />
+            </div>
+            <div class="form__group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="" />
+            </div>
+            <div class="form__group">
+                <label>Password</label>
+                <input type="password" name="password" />
+            </div>
+            <div class="form__group">
+                <label>Confirm Password</label>
+                <input type="password" name="confirm_password" />
+            </div>
+            <div>
+                <p>Already have an account ? <a href="login">
+                        Login
+                    </a></p>
+            </div>
+            <div>
+                <button class="login__cta">Register</button>
+            </div>
+        </form>
+    </div>
+
+</section>
+
+<%-include("../partials/_footer.ejs") -%>

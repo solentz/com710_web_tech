@@ -1,0 +1,36 @@
+<%-include("../partials/_header.ejs") -%>
+<section class="game">
+    <div class="d-flex game__header">
+        <div>
+            <img src="/img/games.png" alt="game pad" />
+            <h1 class="game__heading">Games Available</h1>
+        </div>
+        <h5>Connect-the-dots, puzzles, quizzes, and more. Play these games and test your knowledge! </h5>
+    </div>
+    <div class="game__grid">
+
+        <a href="games/endangered">
+            <div class="game__card">
+                <img src="/img/olg_tv_endangered_ology_listing.jpg" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">Endangered</div>
+                </div>
+
+                <h3 class="game__name">Endangered Species Game</h3>
+                <p class="game__desc">Play this game to find out how a law protects animals and plants.</p>
+            </div>
+        </a>
+        <a href="">
+            <div class="game__card">
+                <img src="/img/endangered_intro.gif" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">Flip Card</div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</section>
+
+<script src="/js/carousel.js"></script>
+<%-include("../partials/_footer.ejs") -%>

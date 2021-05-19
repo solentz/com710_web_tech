@@ -79,7 +79,6 @@ function currentSlide(n) {
 function SlideShow(n) {
   var i;
   var slides = document.getElementsByClassName("Containers");
-  var circles = document.getElementsByClassName("dots");
   if (n > slides.length) {
     slidePosition = 1;
   }
@@ -89,28 +88,28 @@ function SlideShow(n) {
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-  for (i = 0; i < circles.length; i++) {
-    circles[i].className = circles[i].className.replace(" enable", "");
+  // for (i = 0; i < circles.length; i++) {
+  //   circles[i].className = circles[i].className.replace(" enable", "");
+  // }
+  slides[slidePosition - 1].style.display = "block";
+}
+
+// var slidePosition = 0;
+Automate();
+
+function Automate() {
+  var i;
+  var slides = document.getElementsByClassName("Containers");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slidePosition++;
+  if (slidePosition > slides.length) {
+    slidePosition = 1;
   }
   slides[slidePosition - 1].style.display = "block";
-  circles[slidePosition - 1].className += " enable";
+  setTimeout(Automate, 2000); // Change image every 2 seconds
 }
-// var slidePosition = 0;
-// Automate();
-
-// function Automate() {
-//   var i;
-//   var slides = document.getElementsByClassName("Containers");
-//   for (i = 0; i < slides.length; i++) {
-//     slides[i].style.display = "none";
-//   }
-//   slidePosition++;
-//   if (slidePosition > slides.length) {
-//     slidePosition = 1;
-//   }
-//   slides[slidePosition - 1].style.display = "block";
-//   setTimeout(Automate, 2000); // Change image every 2 seconds
-// }
 
 var x = document.getElementById("toast");
 

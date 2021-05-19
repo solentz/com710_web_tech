@@ -1,16 +1,97 @@
 <%-include("./partials/_header.ejs") -%>
+<link rel="stylesheet" href="/css/modal.css">
+
+<section class="animals">
+    <div class="d-flex animals__btnSection">
+        <button id="myBtnLocation" class="location__cta">Add New Location</button>
+        <button id="myBtn" class="animals__cta">Add New Animal</button>
+    </div>
+    <div class="animals__grid">
+        <a href="animals/endangered">
+            <div class="animals__card">
+                <img src="/img/olg_tv_endangered_ology_listing.jpg" alt="Avatar" class="image" />
+                <div class="overlay">
+                    <div class="text">
+                        <p>Name</p>
+                        <p>Endangered</p>
+                    </div>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+
+        </a>
+        <a href="animals/endangered">
+            <div class="animals__card">
+                <img src="/img/olg_tv_endangered_ology_listing.jpg" alt="Avatar" class="image">
+                <div class="overlay">
+                    <div class="text">
+                        <p>Name</p>
+                        <p>Endangered</p>
+                    </div>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>Edit</button>
+                </div>
+            </div>
+
+        </a>
+    </div>
+</section>
 
 
-
-<!-- The Modal -->
+<!-- Create Animal Modal -->
 <div id="myModal" class="modal">
 
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <div class="text-center">
+            <h1 class="animals__heading">Add Animals</h1>
+        </div>
+        <form class="form">
+            <div class="form__group">
+                <label>Animal Name</label>
+                <input type="text" name="name" autocomplete="off" />
+            </div>
+            <div class="form__group">
+                <label>Animal Image</label>
+                <input type="file" id="upload" name="upload" />
+            </div>
+            <div class="form__group">
+                <label>Animal Location</label>
+                <select name="location">
+                    <option></option>
+                </select>
+
+            </div>
+            <div class="form__group">
+                <label>Animal IsEndangered</label>
+                <div class="d-flex     align-items-center">
+                    <input type="radio" id="true" name="endangered" value="true">
+                    <label for="true">True</label><br>
+                </div>
+                <div class="d-flex     align-items-center">
+                    <input type="radio" id="false" name="endangered" value="false">
+                    <label for="false">False</label><br>
+                </div>
+
+            </div>
+            <div class="form__group">
+                <label>Description</label>
+                <textarea class="form__description" name="description" rows="12">
+                </textarea>
+            </div>
+            <div>
+                <button class="login__cta">Create</button>
+            </div>
+        </form>
     </div>
 
 </div>
 
+<script src="/js/modal.js"></script>
 <%-include("./partials/_footer.ejs") -%>
