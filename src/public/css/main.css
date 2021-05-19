@@ -550,7 +550,7 @@ input {
 
 /* toast */
 #toast {
-    visibility: hidden;
+    /* visibility: hidden; */
     max-width: 350px;
     padding: 0 2em;
     display: flex;

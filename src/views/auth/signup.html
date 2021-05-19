@@ -3,15 +3,17 @@
     <div>
         <div class="text-center">
             <h1 class="login__heading">Register</h1>
+            <%-include ("../partials/_alert.ejs") -%>
         </div>
-        <form class="form">
+
+        <form class="form" action="/api/auth/register" method="POST" autocomplete="off">
             <div class="form__group">
                 <label>Username</label>
-                <input type="text" name="username" placeholder="" />
+                <input type="text" name="username" />
             </div>
             <div class="form__group">
                 <label>Email Address</label>
-                <input type="email" name="email" placeholder="" />
+                <input type="email" name="email" />
             </div>
             <div class="form__group">
                 <label>Password</label>
