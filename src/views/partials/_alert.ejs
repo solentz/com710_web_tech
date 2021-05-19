@@ -1,0 +1,33 @@
+<% if(typeof errors != 'undefined'){ %>
+<div id="toast" class="error">
+    <strong id="desc">
+        <%= errors %>
+    </strong>
+</div>
+<% } %>
+
+<% if(error != ''){ %>
+<div id="toast" class="error">
+    <strong id="desc">
+
+        <%= error %>
+    </strong>
+</div>
+<% } %>
+
+<% if(success_msg != ''){ %>
+<div id="toast" class="success">
+    <strong id="desc">
+        <%= success_msg %>
+    </strong>
+</div>
+<% } %>
+
+
+<% if(error_msg != ''){ %>
+<div id="toast" class="error">
+    <strong id="desc">
+        <%= error_msg %>
+    </strong>
+</div>
+<% } %>

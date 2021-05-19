@@ -1,13 +1,75 @@
 <%-include("./partials/_header.ejs") -%>
-<section class="home">
-    <div>
-        <h4 class="home__subHeading">Welcome to the</h4>
-        <h1 class="home__heading">Wildlife</h1>
-        <p>With over 2,500 animals across the globe - <br />you're in for a really wild time at WildLife Zoo</p>
+<section>
+    <div class="slideshow-container fade">
 
+        <!-- Full images with numbers and message Info -->
+        <div class="Containers">
+            <div class="MessageInfo">1 / 3</div>
+            <img src="/img/elephant.jpg" style="width: 100%;
+                            object-position: 30% 40%;
+            height: 90vh;object-fit:cover">
+            <div class="Info">First caption</div>
+        </div>
+
+        <div class="Containers">
+            <div class="MessageInfo">2 / 3</div>
+            <img src="/img/Tiger.jpg" style="width: 100%;
+              object-position: 30% 0%;
+            height: 90vh;object-fit:cover">
+            <div class="Info">Second Caption</div>
+        </div>
+
+        <div class="Containers">
+            <div class="MessageInfo">3 / 3</div>
+            <img src="/img/zebra.jpg" style="width: 100%;
+             object-position: 30% 70%;
+            height: 90vh;object-fit:cover">
+            <div class="Info">Third Caption</div>
+        </div>
+
+        <!-- Back and forward buttons -->
+        <a class="Back" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="forward" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <div></div>
+    <br>
 
+    <!-- The circles/dots -->
+    <div style="text-align:center">
+        <span class="dots" onclick="currentSlide(1)"></span>
+        <span class="dots" onclick="currentSlide(2)"></span>
+        <span class="dots" onclick="currentSlide(3)"></span>
+    </div>
+    <!-- <div class="container">
+        <div class="slide__content">
+            <h4 class="home__subHeading">Welcome to the</h4>
+            <h1 class="home__heading">Wildlife</h1>
+            <p>With over 2,500 animals across the globe - <br />you're in for a really wild time at WildLife
+                Zoo</p>
+
+        </div>
+
+    </div> -->
 </section>
+<section id="about">
+    <div class="container">
+        <h1>About Zooland</h1>
+        <div class="about__flex">
+            <div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corrupti ipsam voluptatibus numquam
+                    suscipit,
+                    pariatur consequatur nobis fugit quae, voluptas distinctio deserunt voluptates dolor nam natus
+                    aliquid,
+                    nostrum obcaecati laborum in.
+                    Rerum recusandae ullam at voluptate nesciunt cupiditate explicabo expedita eaque accusamus dolorum
+                    asperiores iure debitis ducimus doloremque ipsum eum cumque magnam sit iusto repellat non fuga
+                    commodi,
+                    vel accusantium. Consequuntur?</p>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</section>
+<!-- <button onclick="launch_toast()">Show Toast</button> -->
 
+<script src="/js/carousel.js"></script>
 <%-include("./partials/_footer.ejs") -%>

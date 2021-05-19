@@ -19,6 +19,12 @@ app.get("/", (request, response) => {
   });
 });
 
+app.get("/login", (request, response) => {
+  response.render("auth/login", {
+    pageTitle: "ZooLand || Login Page",
+    pageDescription: "ZooLand is  a website for children",
+  });
+});
 //
 app.listen(PORT, (request, response) => {
   console.log(`application is running on port http://localhost:${PORT}`);
