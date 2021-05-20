@@ -109,4 +109,4 @@ src/public/img/uploads/*.png
 src/public/img/uploads/*.gif
 
 
-src/store/*
+src/store/*.db
