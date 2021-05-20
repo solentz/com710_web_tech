@@ -108,7 +108,7 @@ function Automate() {
     slidePosition = 1;
   }
   slides[slidePosition - 1].style.display = "block";
-  setTimeout(Automate, 2000); // Change image every 2 seconds
+  setTimeout(Automate, 4000); // Change image every 2 seconds
 }
 
 var x = document.getElementById("toast");

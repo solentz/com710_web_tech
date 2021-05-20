@@ -45,3 +45,8 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.create__location {
+    width: 50%;
+    margin: 0 auto;
+}

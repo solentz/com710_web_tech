@@ -2,44 +2,36 @@
 <link rel="stylesheet" href="/css/modal.css">
 
 <section class="animals">
+
+    <%if(isAuthenticated){%>
     <div class="d-flex animals__btnSection">
-        <button id="myBtnLocation" class="location__cta">Add New Location</button>
-        <button id="myBtn" class="animals__cta">Add New Animal</button>
+        <button id="myBtn" class="location__cta">Add New Location</button>
+        <a href="/create" class="animals__cta">Add New Animal</a>
     </div>
+    <%}%>
+    <%if(animals.length>0){%>
     <div class="animals__grid">
-        <a href="animals/endangered">
-            <div class="animals__card">
-                <img src="/img/olg_tv_endangered_ology_listing.jpg" alt="Avatar" class="image" />
-                <div class="overlay">
-                    <div class="text">
-                        <p>Name</p>
-                        <p>Endangered</p>
-                    </div>
-                </div>
+        <% for(var i = 0;i <animals.length;i++){%>
+        <div class="animals__card">
+            <a href="/pets/<%=animals[i].id%>">
+                <img src="/img/uploads/<%=animals[i].image%>" alt="<%=animals[i].name%>" class="animals__img" />
                 <div>
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <h3><%= animals[i].name %></h3>
+                    <% if(animals[i].endangered  == 'true') {%>
+                    <p>Endangered</p>
+                    <%}%>
                 </div>
-            </div>
-
-        </a>
-        <a href="animals/endangered">
-            <div class="animals__card">
-                <img src="/img/olg_tv_endangered_ology_listing.jpg" alt="Avatar" class="image">
-                <div class="overlay">
-                    <div class="text">
-                        <p>Name</p>
-                        <p>Endangered</p>
+            </a>
+            <% if(isAuthenticated) { %>
+                    <div class="animals__btnArea">
+                        <a href="/edit/<%=animals[i].id%>" class="edit__cta">Edit</a>
+                        <button class="delete__cta" name="<%=animals[i].id%>" id="delete">Delete</button>
                     </div>
-                </div>
-                <div>
-                    <button>Edit</button>
-                    <button>Edit</button>
-                </div>
+                    <%}%>
             </div>
-
-        </a>
-    </div>
+            <%} %>
+                </div>
+                <%}%>
 </section>
 
 
@@ -49,46 +41,20 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <div class="text-center">
-            <h1 class="animals__heading">Add Animals</h1>
+        <div class="create__location">
+            <div class="text-center">
+                <h1 class="animals__heading">Create Location</h1>
+            </div>
+            <form class="form" role="form" method="post" action="/api/location">
+                <div class="form__group">
+                    <label>Location</label>
+                    <input type="text" name="location" autocomplete="off" />
+                </div>
+                <div>
+                    <button class="login__cta">Create Location</button>
+                </div>
+            </form>
         </div>
-        <form class="form">
-            <div class="form__group">
-                <label>Animal Name</label>
-                <input type="text" name="name" autocomplete="off" />
-            </div>
-            <div class="form__group">
-                <label>Animal Image</label>
-                <input type="file" id="upload" name="upload" />
-            </div>
-            <div class="form__group">
-                <label>Animal Location</label>
-                <select name="location">
-                    <option></option>
-                </select>
-
-            </div>
-            <div class="form__group">
-                <label>Animal IsEndangered</label>
-                <div class="d-flex     align-items-center">
-                    <input type="radio" id="true" name="endangered" value="true">
-                    <label for="true">True</label><br>
-                </div>
-                <div class="d-flex     align-items-center">
-                    <input type="radio" id="false" name="endangered" value="false">
-                    <label for="false">False</label><br>
-                </div>
-
-            </div>
-            <div class="form__group">
-                <label>Description</label>
-                <textarea class="form__description" name="description" rows="12">
-                </textarea>
-            </div>
-            <div>
-                <button class="login__cta">Create</button>
-            </div>
-        </form>
     </div>
 
 </div>

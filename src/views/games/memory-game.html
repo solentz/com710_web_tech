@@ -1,0 +1,90 @@
+<%-include("../partials/_header.ejs") -%>
+<link rel="stylesheet" href="/css/modal.css">
+<link rel="stylesheet" href="/css/memory-game.css">
+<section class="memory">
+    <div class="container">
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+
+        <section class="score-panel">
+            <span class="moves">0</span> Move(s)
+
+            <div class="timer">
+            </div>
+
+            <div class="restart" onclick=startGame()>
+                Reset
+            </div>
+        </section>
+
+        <ul class="deck" id="card-deck">
+            <!-- changed diamond to cat -->
+            <li class="card" type="cat">
+                Cat
+            </li>
+            <li class="card" type="lion">
+                Lion
+            </li>
+            <li class="card match" type="shark">
+                Shark </li>
+            <li class="card" type="leopard">
+                Leopard </li>
+            <li class="card" type="elephant">
+                Elephant
+            </li>
+            <li class="card match" type="shark">
+                Shark </li>
+            <li class="card" type="snake">
+                Snake </li>
+            <li class="card" type="antelope">
+                Antelope
+            </li>
+            <li class="card" type="cat">
+                Cat
+            </li>
+            <li class="card" type="tiger">
+                Tiger
+            </li>
+            <li class="card" type="snake">
+
+                Snake </li>
+            <li class="card" type="tiger">
+                Tiger
+            </li>
+            <li class="card open show" type="leopard">
+                Leopard
+            </li>
+            <li class="card" type="antelope">
+                Antelope
+            </li>
+            <li class="card" type="lion">
+                Lion
+            </li>
+            <li class="card" type="elephant">
+                Elephant </li>
+        </ul>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <a class="close" href=#>×</a>
+
+                <h2 class="text-center">Congratulations 🎉</h2>
+                <div class="content-1">
+                    Congratulations you're a winner 🎉🎉
+                </div>
+                <div class="content-2">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                </div>
+                <button id="play-again" onclick="playAgain()">
+                    Play again 😄</a>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<%-include("../partials/_footer.ejs") -%>

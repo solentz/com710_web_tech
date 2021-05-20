@@ -1,0 +1,16 @@
+<%-include("./partials/_header.ejs") -%>
+<section>
+    <div class="view">
+        <h1 class="view__name"><%= animal.name %></h1>
+        <img src="/img/uploads/<%=animal.image %>" alt="animal" class="view__img" />
+        <div class="d-flex">
+            <% if(animal.endangered  == 'true') {%>
+            <h3 class="view__endangered"> Endangered</h3>
+            <%}%> 
+            Location: <%= animal.location %>
+        </div>
+        <p class="view__desc"><%= animal.description %></p>
+    </div>
+</section>
+
+<%-include("./partials/_footer.ejs") -%>

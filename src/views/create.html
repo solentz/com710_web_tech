@@ -1,0 +1,50 @@
+<%-include("./partials/_header.ejs") -%>
+<section>
+    <div class="animal">
+        <div class="text-center">
+            <h1 class="animals__heading">Add Animals</h1>
+        </div>
+        <form class="form" role="form" method="post" action="/api/animals" enctype="multipart/form-data"
+            autocomplete="off">
+            <div class="form__group">
+                <label>Animal Name</label>
+                <input type="text" name="name" autocomplete="off" />
+            </div>
+            <div class="form__group">
+                <label>Animal Image</label>
+                <input type="file" id="upload" name="upload" />
+            </div>
+            <div class="form__group">
+                <label for="location">Animal Location</label>
+                <select name="location">
+                    <option></option>
+                    <% for(var i = 0;i < location.length;i++){%>
+                    <option label="<%= location[i].location %> " value="<%= location[i].id %>">
+                        <%= location[i].location%></option>
+                    <%}%>
+                </select>
+            </div>
+            <div class="form__group">
+                <label>Animal IsEndangered</label>
+                <div class="d-flex     align-items-center">
+                    <input type="radio" id="true" name="endangered" value="true">
+                    <label for="true">True</label><br>
+                </div>
+                <div class="d-flex     align-items-center">
+                    <input type="radio" id="false" name="endangered" value="false">
+                    <label for="false">False</label><br>
+                </div>
+
+            </div>
+            <div class="form__group">
+                <label>Description</label>
+                <textarea class="form__description" name="description" rows="8">
+                </textarea>
+            </div>
+            <div>
+                <button class="login__cta">Create</button>
+            </div>
+        </form>
+    </div>
+</section>
+<%-include("./partials/_footer.ejs") -%>

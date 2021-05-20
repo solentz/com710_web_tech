@@ -46,7 +46,7 @@ const db = new sqlite.Database(database_location, (err) => {
   //   ====== Animals Table =====================
 
   db.run(
-    `CREATE TABLE IF NOT EXITS animals(
+    `CREATE TABLE IF NOT EXISTS animals(
     id INTEGER primary key AUTOINCREMENT,
     name text,
     description text,
@@ -58,6 +58,7 @@ const db = new sqlite.Database(database_location, (err) => {
 )`,
     (err) => {
       if (err) {
+        console.log(err)
         console.log("Animals Table Created Successful");
       }
     }

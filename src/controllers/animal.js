@@ -3,6 +3,7 @@ const db = require("../database");
 const createAnimal = async (req, res) => {
   try {
     var errors = [];
+    console.log(req.body);
     if (!req.body.name) {
       errors.push("Name required");
     }
@@ -21,18 +22,21 @@ const createAnimal = async (req, res) => {
 
     if (errors.length) {
       req.flash("error_msg", errors.join(","));
+      return res.status(400).redirect("/create");
     }
 
     var file = req.files.upload;
-    var img_name = file.name;
+
     if (
       file.mimetype == "image/jpeg" ||
       file.mimetype == "image/png" ||
       file.mimetype == "image/gif"
     ) {
-      file.mv(`src/public/images/uploads/${file.name} `, (err) => {
+      var img_name = file.name;
+      file.mv(`src/public/img/uploads/` + file.name, (err) => {
         if (err) {
-          return req.flash("error_msg", err.message);
+          req.flash("error_msg", err.message);
+          return res.status(400).redirect("/create");
         }
         var query =
           "INSERT INTO animals (name,description ,endangered,location_id, image) VALUES (?,?,?,?,?)";
@@ -45,20 +49,22 @@ const createAnimal = async (req, res) => {
         ];
         db.run(query, params, (err, result) => {
           if (err) {
-            return req.flash("error_msg", err.message);
+            req.flash("error_msg", err.message);
+            return res.status(400).redirect("/create");
           }
           req.flash("success_msg", "created successfully");
-          return res.redirect("/animals", 200);
+          return res.status(200).redirect("/animals");
         });
       });
     } else {
       message =
         "This format is not allowed , please upload file with '.png','.gif','.jpg'";
-      return req.flash("error_msg", message);
+      req.flash("error_msg", message);
+      return res.status(400).redirect("/create");
     }
   } catch (err) {
-    req.flash("error_msg", e.message);
-    return res.redirect("/animals", 200);
+    req.flash("error_msg", err.message);
+    return res.status(500).redirect("/create");
   }
 };
 
@@ -76,9 +82,9 @@ const getAnimals = async (req, res) => {
         data: rows,
       });
     });
-  } catch (e) {
-    res.status(500).json({
-      message: e.message,
+  } catch (err) {
+    return res.status(500).json({
+      err: err.message,
     });
   }
 };
@@ -95,13 +101,13 @@ const getAnimalById = async (req, res) => {
         });
         return;
       }
-      res.status(200).json({
+      return res.status(200).json({
         data: row,
       });
     });
-  } catch (e) {
+  } catch (err) {
     res.status(500).json({
-      message: e.message,
+      message: err.message,
     });
   }
 };
@@ -113,13 +119,15 @@ const deleteAnimalById = async (req, res) => {
       result
     ) {
       if (err) {
-        return req.flash("error_msg", err.message);
+        req.flash("error_msg", err.message);
+        return res.status(400).json({ error: err.message });
       }
       req.flash("success_msg", " Animal has been deleted Successfully");
       return res.status(200).json({ message: "successful", data: result });
     });
-  } catch (e) {
-    return req.flash("error_msg", e.message);
+  } catch (err) {
+    req.flash("error_msg", err.message);
+    return res.status(500).json({ error: err.message });
   }
 };
 
@@ -127,7 +135,7 @@ const updateAnimalById = async (req, res) => {
   try {
     db.run(
       `UPDATE animals SET name = coalesce(?,name), description = coalesce(?,description), 
-        endangered = coalesce(?,endangered), location_id = coalesce(?,location) WHERE id = ?`,
+        endangered = coalesce(?,endangered), location_id = coalesce(?,location_id) WHERE id = ?`,
       [
         req.body.name,
         req.body.description,
@@ -137,18 +145,19 @@ const updateAnimalById = async (req, res) => {
       ],
       function (err, result) {
         if (err) {
-          return req.flash("error_msg", err.message);
+          console.log(err.message);
+          req.flash("error_msg", err.message);
+          return res.status(400).redirect(`/edit/${req.params.id}`);
         }
         req.flash("success_msg", "Updated Successfully");
-        return res.redirect("/animals", 200);
+        return res.status(200).redirect("/animals");
       }
     );
-  } catch (e) {
-    req.flash("error_msg", e.message);
-    res.redirect("update-animal");
+  } catch (err) {
+    req.flash("error_msg", err.message);
+    res.status(500).redirect(`/edit/${req.params.id}`);
   }
 };
-
 
 module.exports = {
   createAnimal,

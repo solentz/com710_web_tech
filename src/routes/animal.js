@@ -8,11 +8,11 @@ const {
 } = require("../controllers/animal");
 const { authenticatedUser, notAuthenticated } = require("../middleware");
 
-router.get("/animals", getAnimals);
+router.get("/animals", notAuthenticated, getAnimals);
 router.post("/animals", authenticatedUser, createAnimal);
 
 //
-router.get("/animals/:id", getAnimalById);
+router.get("/animals/:id", notAuthenticated, getAnimalById);
 router.put("/animals/:id", authenticatedUser, updateAnimalById);
 router.delete("/animals/:id", authenticatedUser, deleteAnimalById);
 

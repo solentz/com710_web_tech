@@ -1,8 +1,8 @@
 const db = require("../database");
 
-const getLocation = async (req, res) => {
+const getLocations = async (req, res) => {
   try {
-    var query = "select * from locations";
+    var query = "SELECT * FROM locations";
     var params = [];
     db.all(query, params, (err, rows) => {
       if (err) {
@@ -14,17 +14,21 @@ const getLocation = async (req, res) => {
         data: rows,
       });
     });
-  } catch (e) {
+  } catch (err) {
     res.status(500).json({
-      message: e.message,
+      message: err.message,
     });
   }
 };
 
 const createLocation = async (req, res) => {
   try {
+    if (!req.body.location) {
+      req.flash("error_msg", "Location Require");
+      return;
+    }
     var query = "INSERT INTO locations (location) VALUES (?)";
-    var params = [req.body.place];
+    var params = [req.body.location];
     db.run(query, params, function (err, result) {
       if (err) {
         req.flash("error_msg", err.message);
@@ -34,9 +38,10 @@ const createLocation = async (req, res) => {
         });
       }
       req.flash("success_msg", "Place Created Successfully");
-      return res.redirect(200, "/animals");
+      return res.redirect("/animals");
     });
-  } catch (e) {
+  } catch (err) {
+    req.flash("error_msg", err.message);
     res.status(500).render("animals", {
       pageTitle: "ZooLand || ",
       pageDescription: "ZooLand",
@@ -44,7 +49,7 @@ const createLocation = async (req, res) => {
   }
 };
 
-exports.default = {
+module.exports = {
   createLocation,
   getLocations,
 };
