@@ -27,10 +27,7 @@ const registerUser = async (req, res) => {
     }
     if (errors.length) {
       req.flash("error_msg", errors.join(","));
-      return res.status(400).render("auth/signup", {
-        pageTitle: "ZooLand ||",
-        pageDescription: "Zooland",
-      });
+      return res.status(400).redirect("/register");
     }
     console.log("here");
     const password = req.body.password;

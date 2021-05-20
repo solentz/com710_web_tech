@@ -18,6 +18,19 @@ window.addEventListener("DOMContentLoaded", (e) => {
       });
     });
 });
+var x = document.getElementById("toast");
+var close_toast = document.querySelector(".close_toast");
+
+close_toast &&
+  close_toast.addEventListener("click", () => {
+    x.style.display = "none";
+  });
+
+// if (x) {
+//   setTimeout(function () {
+//     x.className = x.className.replace("show", "");
+//   }, 5000);
+// }
 
 let card = document.getElementsByClassName("card");
 let cards = [...card];

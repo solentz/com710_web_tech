@@ -12,7 +12,7 @@ const initializePassport = (passport) => {
           return done(null, false, { message: err.message });
         }
         if (!row) {
-          return done(null, false, { message: "That email is not registered" });
+          return done(null, false, { message: "This email is not registered" });
         }
         bcrypt.compare(password, row.password, function (err, result) {
           if (result) {
@@ -25,16 +25,11 @@ const initializePassport = (passport) => {
         });
       });
     } catch (err) {
-      res.redirect("/login");
+      res.status(500).redirect("/login");
     }
   };
 
-  passport.use(
-    new LocalStrategy(
-      { usernameField: "email", },
-      authenticateUser
-    )
-  );
+  passport.use(new LocalStrategy({ usernameField: "email" }, authenticateUser));
 
   passport.serializeUser(function (user, done) {
     return done(null, user.id);

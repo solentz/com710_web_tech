@@ -3,6 +3,8 @@
     <div>
         <div class="text-center">
             <h1 class="login__heading">Login</h1>
+            <%-include ("../partials/_alert.ejs") -%>
+
         </div>
         <form class="form" action="/api/auth/login" method="POST" autocomplete="off">
             <div class="form__group">
