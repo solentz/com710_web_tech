@@ -103,7 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-# Procfile
+Procfile
 src/public/img/uploads/*.jpg
 src/public/img/uploads/*.png
 src/public/img/uploads/*.gif
