@@ -104,6 +104,9 @@ dist
 .tern-port
 
 
-src/public/img/uploads
+src/public/img/uploads/*.jpg
+src/public/img/uploads/*.png
+src/public/img/uploads/*.gif
+
 
 src/store/*
