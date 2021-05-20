@@ -342,102 +342,6 @@ input {
     align-items: center;
 }
 
-/* carousel */
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.container-fluid {
-    padding: 0 5em;
-}
-
-.carousel__buttons {
-    margin: 10px 0;
-    display: flex;
-    width: 80%;
-}
-
-.carousel__buttons .carousel-button:focus {
-    background-color: var(--yellow);
-    color: var(--white)
-}
-
-.carousel__buttons .carousel-button:hover {
-    background-color: #ddd;
-}
-
-.carousel__buttons .carousel-button:not(:nth-last-child()) {
-    margin-right: 10px;
-}
-
-.carousel__buttons .carousel-button {
-    font-size: 1rem;
-    margin-right: 10px;
-    box-shadow: 0 4px 8px #eee;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    color: #454545;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
-}
-
-.carousel {
-    width: 80%;
-    border: 1px solid rgb(206, 206, 206);
-    overflow: hidden;
-    display: grid;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px #eee;
-    padding: 20px;
-    grid-template-columns: repeat(6, 90%);
-}
-
-.carousel .carousel__item.active {
-    transform: scale(1) translateX(-0%);
-}
-
-.carousel .carousel__item {
-    width: 100%;
-    transform: translateX(-0%) scale(0.9);
-    border-radius: 5px;
-    transition: all 0.7s ease;
-    display: flex;
-
-    background: url("/img/Tiger.jpg");
-    text-transform: uppercase;
-    justify-content: center;
-
-    align-items: center;
-    padding: 10px;
-    height: 200px;
-}
-
-.bg-yellow.active {
-    background: darkslategrey;
-    color: white;
-}
-
-.bg-brown.active {
-    background-color: rosybrown;
-}
-
-.bg-green.active {
-    background-color: greenyellow;
-}
-
-.bg-blue.active {
-    background-color: dodgerblue;
-}
-
 
 /* Slideshow container */
 .slideshow-container {
@@ -542,12 +446,72 @@ input {
     }
 }
 
-.about__flex {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1em;
+.about_us {
+    display: block;
+    min-height: 60vh;
+    text-align: left;
+    position: relative;
+    padding: 2em 2em;
 }
 
+.about_us>h2 {
+    display: block;
+    font-size: 32px;
+    line-height: 31px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0 auto 30px;
+    color: var(--yellow);
+}
+
+.about_us>span {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--yellow);
+    line-height: 1.75;
+    margin: 20px auto 10px;
+}
+
+.about_us>p {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.75;
+    margin: 0 auto 10px;
+}
+
+.about_us>img {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.about_us>.mission {
+    display: blcok;
+    width: 60%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    margin-left: 20%;
+    padding: 5px 10px;
+
+}
+
+.about_us>.mission>span {
+    display: block;
+    margin: 0 auto 10px;
+    font-size: x-large;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.75;
+}
+
+.about_us>.mission>p {
+    display: block;
+    margin: 0 auto 10px;
+    text-align: center;
+    font-weight: 500;
+    line-height: 1.75;
+}
 
 
 
@@ -884,6 +848,11 @@ input {
         height: 100px;
     }
 
+    .about_us>.mission {
+        width: 100%;
+        margin: 0;
+    }
+
 }
 
 .view {
@@ -941,7 +910,6 @@ input {
 footer {
     height: 10vh;
     background-color: var(--dark);
-    margin-top: 2em;
     color: var(--white);
     padding: 0 2em;
     display: flex;
