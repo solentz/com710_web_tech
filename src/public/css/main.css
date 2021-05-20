@@ -919,3 +919,7 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+.container-fluid {
+    padding: 0 4em;
+}
